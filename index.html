@@ -6,16 +6,13 @@
     <title>Mispat Tobacco & Smoke Street - Coming Soon</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* ==== NO-CHANGE AUTOMATIC STYLES ==== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #1a1a1a, #2d1b3d);
+            background: #1a1a1a;
             color: #fff;
             min-height: 100vh;
             display: flex;
@@ -23,28 +20,25 @@
             align-items: center;
             padding: 2rem;
             text-align: center;
+            overflow-x: hidden;
         }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
+        .container { max-width: 800px; margin: 0 auto; }
         .logo {
             font-size: 2.5rem;
             margin-bottom: 1rem;
             color: #ff6b6b;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: pulse 2s infinite;
         }
-
         .countdown {
             background: rgba(255,255,255,0.1);
             padding: 2rem;
             border-radius: 15px;
             margin: 2rem 0;
             backdrop-filter: blur(10px);
+            border: 2px solid #ff6b6b;
+            box-shadow: 0 0 20px rgba(255,107,107,0.3);
         }
-
         .timer {
             display: flex;
             justify-content: center;
@@ -52,39 +46,16 @@
             font-size: 2rem;
             margin: 2rem 0;
         }
-
         .timer-item {
             background: rgba(0,0,0,0.3);
             padding: 1rem;
             border-radius: 10px;
             min-width: 100px;
+            transition: transform 0.3s;
         }
-
-        .timer-number {
-            font-size: 2.5rem;
-            font-weight: 600;
-            display: block;
-        }
-
-        .timer-label {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            opacity: 0.8;
-        }
-
-        .address {
-            font-size: 1.2rem;
-            margin: 1rem 0;
-            opacity: 0.9;
-        }
-
-        .services, .products {
-            margin: 2rem 0;
-            padding: 1.5rem;
-            background: rgba(255,255,255,0.05);
-            border-radius: 10px;
-        }
-
+        .timer-item:hover { transform: scale(1.1); }
+        .address { font-size: 1.2rem; margin: 1rem 0; opacity: 0.9; }
+        .services, .products { margin: 2rem 0; padding: 1.5rem; }
         .badge {
             display: inline-block;
             padding: 0.5rem 1rem;
@@ -92,33 +63,32 @@
             background: #ff6b6b;
             border-radius: 20px;
             font-size: 0.9rem;
+            transition: all 0.3s;
         }
-
-        @media (max-width: 768px) {
-            .timer {
-                flex-wrap: wrap;
-                gap: 1rem;
-            }
-            
-            .logo {
-                font-size: 2rem;
-            }
-        }
-
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-
+        .badge:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(255,107,107,0.3); }
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
+        .smoke {
+            position: fixed;
+            width: 200vw;
+            height: 200vh;
+            background: radial-gradient(circle, rgba(255,107,107,0.05) 20%, transparent 60%);
+            animation: smoke 20s linear infinite;
+            z-index: -1;
+        }
+        @keyframes smoke {
+            0% { transform: translate(-50%,-50%) rotate(0deg) scale(1); }
+            100% { transform: translate(50%,50%) rotate(360deg) scale(1.5); }
+        }
     </style>
 </head>
 <body>
+    <div class="smoke"></div>
     <div class="container">
-        <h1 class="logo pulse">Mispat Tobacco & Smoke Street</h1>
+        <h1 class="logo">Mispat Tobacco & Smoke Street</h1>
         <div class="address">
             <i class="fas fa-map-marker-alt"></i> 12610 AL HWY 157 Unit-5, Vinemont, AL 35179
         </div>
@@ -126,22 +96,10 @@
         <div class="countdown">
             <h2>Opening In</h2>
             <div class="timer">
-                <div class="timer-item">
-                    <span class="timer-number" id="days">00</span>
-                    <span class="timer-label">Days</span>
-                </div>
-                <div class="timer-item">
-                    <span class="timer-number" id="hours">00</span>
-                    <span class="timer-label">Hours</span>
-                </div>
-                <div class="timer-item">
-                    <span class="timer-number" id="minutes">00</span>
-                    <span class="timer-label">Minutes</span>
-                </div>
-                <div class="timer-item">
-                    <span class="timer-number" id="seconds">00</span>
-                    <span class="timer-label">Seconds</span>
-                </div>
+                <div class="timer-item"><span id="days">00</span><br>Days</div>
+                <div class="timer-item"><span id="hours">00</span><br>Hours</div>
+                <div class="timer-item"><span id="minutes">00</span><br>Minutes</div>
+                <div class="timer-item"><span id="seconds">00</span><br>Seconds</div>
             </div>
         </div>
 
@@ -163,20 +121,21 @@
     </div>
 
     <script>
+        // Automatic Countdown with Confetti
         const openingDate = new Date();
         openingDate.setMonth(openingDate.getMonth() + 1);
         openingDate.setDate(1);
         openingDate.setHours(0, 0, 0, 0);
 
+        const confetti = new ConfettiGenerator({ target: 'confetti-canvas', max: 150 });
+        
         function updateTimer() {
-            const now = new Date().getTime();
+            const now = new Date();
             const distance = openingDate - now;
 
             if (distance < 0) {
-                document.getElementById('days').innerHTML = '00';
-                document.getElementById('hours').innerHTML = '00';
-                document.getElementById('minutes').innerHTML = '00';
-                document.getElementById('seconds').innerHTML = '00';
+                document.body.style.background = "#1a1a1a url('data:image/svg+xml,<svg%20viewBox=\"0%200%20100%20100\"%20xmlns=\"http://www.w3.org/2000/svg\"><text%20x=\"50%\"%20y=\"50%\"%20fill=\"%23ff6b6b\"%20font-size=\"30\"%20text-anchor=\"middle\">WE\'RE%20OPEN!</text></svg>')";
+                confetti.render();
                 return;
             }
 
@@ -185,14 +144,15 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById('days').innerHTML = days.toString().padStart(2, '0');
-            document.getElementById('hours').innerHTML = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').innerHTML = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').innerHTML = seconds.toString().padStart(2, '0');
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
         }
 
         setInterval(updateTimer, 1000);
         updateTimer();
     </script>
+    <canvas id="confetti-canvas" style="position:fixed;top:0;left:0;pointer-events:none;z-index:999"></canvas>
 </body>
 </html>
