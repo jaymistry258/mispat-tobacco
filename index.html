@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mispat Tobacco & Smoke Street - Coming Soon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a, #2d1b3d);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ff6b6b;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .countdown {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 2rem;
+            margin: 2rem 0;
+        }
+
+        .timer-item {
+            background: rgba(0,0,0,0.3);
+            padding: 1rem;
+            border-radius: 10px;
+            min-width: 100px;
+        }
+
+        .timer-number {
+            font-size: 2.5rem;
+            font-weight: 600;
+            display: block;
+        }
+
+        .timer-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        .address {
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            opacity: 0.9;
+        }
+
+        .services, .products {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin: 0.5rem;
+            background: #ff6b6b;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .timer {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="logo pulse">Mispat Tobacco & Smoke Street</h1>
+        <div class="address">
+            <i class="fas fa-map-marker-alt"></i> 12610 AL HWY 157 Unit-5, Vinemont, AL 35179
+        </div>
+
+        <div class="countdown">
+            <h2>Opening In</h2>
+            <div class="timer">
+                <div class="timer-item">
+                    <span class="timer-number" id="days">00</span>
+                    <span class="timer-label">Days</span>
+                </div>
+                <div class="timer-item">
+                    <span class="timer-number" id="hours">00</span>
+                    <span class="timer-label">Hours</span>
+                </div>
+                <div class="timer-item">
+                    <span class="timer-number" id="minutes">00</span>
+                    <span class="timer-label">Minutes</span>
+                </div>
+                <div class="timer-item">
+                    <span class="timer-number" id="seconds">00</span>
+                    <span class="timer-label">Seconds</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="services">
+            <h3><i class="fas fa-concierge-bell"></i> Services</h3>
+            <div class="badge"><i class="fas fa-walking"></i> Walk In</div>
+            <div class="badge"><i class="fas fa-car"></i> Drive Thru</div>
+            <div class="badge"><i class="fas fa-globe"></i> Online</div>
+        </div>
+
+        <div class="products">
+            <h3><i class="fas fa-shopping-bag"></i> Products</h3>
+            <div class="badge"><i class="fas fa-smoking"></i> Vape</div>
+            <div class="badge"><i class="fas fa-glass-whiskey"></i> Glass Pipes</div>
+            <div class="badge"><i class="fas fa-history"></i> Antiques</div>
+            <div class="badge"><i class="fas fa-tshirt"></i> Custom T-shirts</div>
+            <div class="badge"><i class="fas fa-cocktail"></i> Non-Alcoholic Drinks</div>
+        </div>
+    </div>
+
+    <script>
+        const openingDate = new Date();
+        openingDate.setMonth(openingDate.getMonth() + 1);
+        openingDate.setDate(1);
+        openingDate.setHours(0, 0, 0, 0);
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const distance = openingDate - now;
+
+            if (distance < 0) {
+                document.getElementById('days').innerHTML = '00';
+                document.getElementById('hours').innerHTML = '00';
+                document.getElementById('minutes').innerHTML = '00';
+                document.getElementById('seconds').innerHTML = '00';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerHTML = days.toString().padStart(2, '0');
+            document.getElementById('hours').innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').innerHTML = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').innerHTML = seconds.toString().padStart(2, '0');
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer();
+    </script>
+</body>
+</html>
