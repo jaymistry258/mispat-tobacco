@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Coming Soon: Mispat Tobacco & Smoke Street - Vape, Glass Pipes, Antiques, Custom Tees & More!" />
+  <meta name="description" content="Coming Soon: Mispat Tobacco & Smoke Street - Vape, Tobacco Pipes, Antiques, Custom Tees & More!" />
   <title>Mispat Tobacco & Smoke Street - Coming Soon</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
       padding: 0;
@@ -15,32 +18,32 @@
       color: #ffffff;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      height: 100vh;
       text-align: center;
-      background-image: url('https://images.unsplash.com/photo-1603467981312-4e80b3c4dd45');
-      background-size: cover;
-      background-position: center;
+      background-color: #111;
     }
     .overlay {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      z-index: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: -1;
     }
-    .content {
-      z-index: 1;
-      padding: 2rem;
+    .hero {
+      background-image: url('https://images.unsplash.com/photo-1545235617-9465d2a556c5');
+      background-size: cover;
+      background-position: center;
+      width: 100%;
+      padding: 5rem 2rem;
+      position: relative;
     }
-    h1 {
-      font-size: 3rem;
+    .hero h1 {
+      font-size: 3.5rem;
       margin-bottom: 0.5rem;
     }
-    h2 {
+    .hero h2 {
       font-size: 1.5rem;
       margin-bottom: 1rem;
       font-weight: 400;
@@ -50,25 +53,56 @@
       font-weight: bold;
       margin-bottom: 2rem;
     }
-    .info {
-      font-size: 1rem;
-      max-width: 600px;
-      margin: 0 auto;
+    section {
+      padding: 4rem 2rem;
+      max-width: 900px;
+    }
+    .info p {
+      font-size: 1.1rem;
       line-height: 1.6;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+    footer {
+      background: #0f0f0f;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
   <div class="overlay"></div>
-  <div class="content">
+  <div class="hero">
     <h1>Mispat Tobacco & Smoke Street</h1>
     <h2>Opening Soon at 12610 AL HWY 157 Unit-5, Vinemont, Alabama 35179</h2>
     <div class="countdown" id="countdown"></div>
-    <div class="info">
-      <p><strong>Services:</strong> Walk-In, Drive-Thru, Online</p>
-      <p><strong>Products:</strong> Vape, Glass Pipes, Antiques, Custom T-shirt Printing, Non-Alcoholic Drinks & More!</p>
-    </div>
   </div>
+
+  <section class="info">
+    <p><strong>🚗 Services:</strong> Walk-In, Drive-Thru, Online</p>
+    <p><strong>🛍️ Products:</strong> Vape, Tobacco Pipes, Cigars, Antiques, Custom T-shirt Printing, Non-Alcoholic Drinks & More!</p>
+  </section>
+
+  <section class="gallery">
+    <img src="https://images.unsplash.com/photo-1598750735129-e3ab1c7031e0" alt="Premium Cigars">
+    <img src="https://images.unsplash.com/photo-1632338333971-7a4eaec16dd6" alt="Tobacco Pipe Display">
+    <img src="https://images.unsplash.com/photo-1661427517585-872cd9012483" alt="Custom Printed T-Shirts">
+    <img src="https://images.unsplash.com/photo-1615807711451-b57a6d0c422e" alt="Vape Devices Selection">
+  </section>
+
+  <footer>
+    &copy; 2025 Mispat Tobacco & Smoke Street. All rights reserved.
+  </footer>
 
   <script>
     // Countdown Timer
@@ -80,7 +114,7 @@
       const distance = targetDate - now;
 
       if (distance < 0) {
-        countdown.innerHTML = "We are now open!";
+        countdown.innerHTML = "🎉 We are now open! Come visit us!";
         return;
       }
 
