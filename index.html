@@ -3,167 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mispat Tobacco & Smoke Street - Coming Soon</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Righteous&display=swap" rel="stylesheet">
+    <title>Mispat Tobacco & Smoke Street</title>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;700&family=Audiowide&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* ==== NO CHANGES NEEDED ==== */
+        /* ===== NO SETUP NEEDED ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Poppins', sans-serif;
-            background: #0a0a0a;
-            color: white;
-            min-height: 100vh;
+            font-family: 'Exo 2', sans-serif;
+            background: #0f0f0f;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        .hero {
+            height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-        }
-        
-        .hero {
             text-align: center;
-            position: relative;
-            z-index: 2;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                        url('https://images.pexels.com/photos/3585798/pexels-photo-3585798.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+            background-size: cover;
+            background-position: center;
+            padding: 2rem;
         }
 
-        .main-title {
-            font-family: 'Righteous', cursive;
+        .hero h1 {
+            font-family: 'Audiowide', cursive;
             font-size: 4rem;
+            color: #8a2be2;
+            text-shadow: 0 0 20px rgba(138,43,226,0.5);
             margin-bottom: 1rem;
-            background: linear-gradient(45deg, #ff6b6b, #ff3860, #ff1a1a);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(255,107,107,0.3);
-            animation: titleGlow 2s ease-in-out infinite;
+            animation: neonPulse 2s infinite;
         }
 
-        .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+        /* Product Showcase */
+        .products-section {
+            padding: 4rem 2rem;
+            background: #1a1a1a;
         }
 
-        .address {
-            font-size: 1.2rem;
-            margin: 2rem 0;
-            padding: 1rem;
-            background: rgba(255,255,255,0.1);
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: #2d2d2d;
             border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 4rem 2rem;
+            background: url('https://images.unsplash.com/photo-1513106580091-1d82408b8cd6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        .service-box {
+            background: rgba(0,0,0,0.8);
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 2rem auto;
             backdrop-filter: blur(5px);
         }
 
-        .floating-badges {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-            margin: 2rem 0;
+        /* Contact Section */
+        .contact-section {
+            padding: 4rem 2rem;
+            background: #0f0f0f;
+            text-align: center;
         }
 
-        .badge {
-            padding: 1rem 2rem;
-            background: linear-gradient(45deg, #ff6b6b, #ff3860);
-            border-radius: 30px;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: 2px solid rgba(255,255,255,0.2);
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
         }
 
-        .badge:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(255,107,107,0.3);
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            background: #2d2d2d;
+            border: 1px solid #8a2be2;
+            color: white;
+            border-radius: 5px;
         }
 
-        .smoke-overlay {
-            position: fixed;
-            width: 100vw;
-            height: 100vh;
-            background: url('data:image/svg+xml,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.3"/></svg>');
-            animation: smokeFlow 20s linear infinite;
-            z-index: 1;
-            pointer-events: none;
+        /* Animations */
+        @keyframes neonPulse {
+            0%, 100% { text-shadow: 0 0 20px rgba(138,43,226,0.5); }
+            50% { text-shadow: 0 0 30px rgba(138,43,226,0.8), 0 0 40px rgba(138,43,226,0.6); }
         }
 
-        @keyframes titleGlow {
-            0%, 100% { text-shadow: 0 0 30px rgba(255,107,107,0.3); }
-            50% { text-shadow: 0 0 50px rgba(255,107,107,0.6); }
+        .float {
+            animation: float 3s ease-in-out infinite;
         }
 
-        @keyframes smokeFlow {
-            0% { transform: translate(0,0) scale(1); opacity: 0.3; }
-            50% { transform: translate(-50px,-50px) scale(1.2); opacity: 0.2; }
-            100% { transform: translate(0,0) scale(1); opacity: 0.3; }
-        }
-
-        @media (max-width: 768px) {
-            .main-title { font-size: 2.5rem; }
-            .subtitle { font-size: 1.2rem; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
     </style>
 </head>
 <body>
-    <div class="smoke-overlay"></div>
-    
-    <div class="hero">
-        <h1 class="main-title">MISPAT TOBACCO & SMOKE STREET</h1>
-        <div class="subtitle">PREMIUM SMOKE SHOP COMING SOON</div>
-        
-        <div class="address">
-            <i class="fas fa-map-marker-alt"></i> 12610 AL HWY 157 Unit-5, Vinemont, AL 35179
+    <!-- Hero Section -->
+    <section class="hero">
+        <div>
+            <h1 class="float">MISPAT TOBACCO & SMOKE STREET</h1>
+            <p class="address" style="font-size: 1.2rem;">
+                <i class="fas fa-map-marker-alt"></i> 12610 AL HWY 157 Unit-5, Vinemont, AL 35179
+            </p>
         </div>
+    </section>
 
-        <div class="floating-badges">
-            <div class="badge"><i class="fas fa-smoking"></i> Vape Products</div>
-            <div class="badge"><i class="fas fa-glass-whiskey"></i> Glass Pipes</div>
-            <div class="badge"><i class="fas fa-tshirt"></i> Custom Printing</div>
-        </div>
+    <!-- Products Section -->
+    <section class="products-section">
+        <h2 style="text-align:center; margin-bottom:2rem; font-size:2rem;">Our Products</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://images.pexels.com/photos/4599761/pexels-photo-4599761.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')"></div>
+                <div class="product-info" style="padding:1rem;">
+                    <h3>Premium Vapes</h3>
+                    <p>Latest devices & flavors</p>
+                </div>
+            </div>
 
-        <div class="floating-badges">
-            <div class="badge"><i class="fas fa-car"></i> Drive Thru</div>
-            <div class="badge"><i class="fas fa-walking"></i> Walk Ins Welcome</div>
-            <div class="badge"><i class="fas fa-shipping-fast"></i> Online Orders</div>
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1589985270828-6a769562ab5b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                <div class="product-info" style="padding:1rem;">
+                    <h3>Glass Pipes</h3>
+                    <p>Handcrafted & artistic designs</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://images.pexels.com/photos/2294342/pexels-photo-2294342.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')"></div>
+                <div class="product-info" style="padding:1rem;">
+                    <h3>Custom T-Shirts</h3>
+                    <p>Personalized designs printed onsite</p>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="service-box">
+            <h2 style="margin-bottom:1rem; color:#8a2be2;">Our Services</h2>
+            <div style="display: grid; gap: 1rem;">
+                <div class="service-item" style="padding:1rem; background:rgba(138,43,226,0.1); border-radius:5px;">
+                    <h3><i class="fas fa-car"></i> Drive-Thru Convenience</h3>
+                    <p>Quick service without leaving your vehicle</p>
+                </div>
+                <div class="service-item" style="padding:1rem; background:rgba(138,43,226,0.1); border-radius:5px;">
+                    <h3><i class="fas fa-laptop"></i> Online Orders</h3>
+                    <p>Shop from home, pickup in-store</p>
+                </div>
+                <div class="service-item" style="padding:1rem; background:rgba(138,43,226,0.1); border-radius:5px;">
+                    <h3><i class="fas fa-users"></i> Expert Consultations</h3>
+                    <p>Knowledgeable staff ready to assist</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <h2>Get Opening Notifications</h2>
+        <form class="contact-form" action="https://formspree.io/f/xqkrgqrg" method="POST">
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <textarea name="message" placeholder="Any specific product requests?" rows="4"></textarea>
+            <button type="submit" style="background:#8a2be2; color:white; padding:1rem 2rem; border:none; border-radius:5px; cursor:pointer;">
+                Notify Me
+            </button>
+        </form>
+    </section>
 
     <script>
-        // Add subtle floating animation to badges
-        document.querySelectorAll('.badge').forEach(badge => {
-            badge.style.animation = `float ${3 + Math.random()*2}s ease-in-out infinite`;
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
 
-        // Add background sparkle effect
-        document.body.addEventListener('mousemove', (e) => {
-            const spark = document.createElement('div');
-            spark.style.cssText = `
-                position: fixed;
-                width: 5px;
-                height: 5px;
-                background: rgba(255,107,107,0.7);
-                border-radius: 50%;
-                left: ${e.pageX}px;
-                top: ${e.pageY}px;
-                pointer-events: none;
-                animation: sparkle 1s ease-out;
-            `;
-            document.body.appendChild(spark);
-            setTimeout(() => spark.remove(), 1000);
+        // Form submission handler
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    alert('Thanks! We'll notify you when we open!');
+                    this.reset();
+                }
+            });
         });
-
-        // Add CSS for animations
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes float {
-                0%, 100% { transform: translateY(0); }
-                50% { transform: translateY(-10px); }
-            }
-            @keyframes sparkle {
-                0% { transform: scale(1); opacity: 1; }
-                100% { transform: scale(3); opacity: 0; }
-            }
-        `;
-        document.head.appendChild(style);
     </script>
 </body>
 </html>
