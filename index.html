@@ -4,155 +4,166 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mispat Tobacco & Smoke Street - Coming Soon</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Righteous&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script>
     <style>
-        /* ==== NO-CHANGE AUTOMATIC STYLES ==== */
+        /* ==== NO CHANGES NEEDED ==== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Poppins', sans-serif;
-            background: #1a1a1a;
-            color: #fff;
+            background: #0a0a0a;
+            color: white;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 2rem;
-            text-align: center;
-            overflow-x: hidden;
-        }
-        .container { max-width: 800px; margin: 0 auto; }
-        .logo {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #ff6b6b;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            animation: pulse 2s infinite;
-        }
-        .countdown {
-            background: rgba(255,255,255,0.1);
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 2rem 0;
-            backdrop-filter: blur(10px);
-            border: 2px solid #ff6b6b;
-            box-shadow: 0 0 20px rgba(255,107,107,0.3);
-        }
-        .timer {
-            display: flex;
             justify-content: center;
-            gap: 2rem;
-            font-size: 2rem;
+            overflow: hidden;
+        }
+        
+        .hero {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .main-title {
+            font-family: 'Righteous', cursive;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #ff3860, #ff1a1a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255,107,107,0.3);
+            animation: titleGlow 2s ease-in-out infinite;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .address {
+            font-size: 1.2rem;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .floating-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
             margin: 2rem 0;
         }
-        .timer-item {
-            background: rgba(0,0,0,0.3);
-            padding: 1rem;
-            border-radius: 10px;
-            min-width: 100px;
-            transition: transform 0.3s;
-        }
-        .timer-item:hover { transform: scale(1.1); }
-        .address { font-size: 1.2rem; margin: 1rem 0; opacity: 0.9; }
-        .services, .products { margin: 2rem 0; padding: 1.5rem; }
+
         .badge {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            margin: 0.5rem;
-            background: #ff6b6b;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            transition: all 0.3s;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #ff6b6b, #ff3860);
+            border-radius: 30px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid rgba(255,255,255,0.2);
         }
-        .badge:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(255,107,107,0.3); }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+
+        .badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255,107,107,0.3);
         }
-        .smoke {
+
+        .smoke-overlay {
             position: fixed;
-            width: 200vw;
-            height: 200vh;
-            background: radial-gradient(circle, rgba(255,107,107,0.05) 20%, transparent 60%);
-            animation: smoke 20s linear infinite;
-            z-index: -1;
+            width: 100vw;
+            height: 100vh;
+            background: url('data:image/svg+xml,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.3"/></svg>');
+            animation: smokeFlow 20s linear infinite;
+            z-index: 1;
+            pointer-events: none;
         }
-        @keyframes smoke {
-            0% { transform: translate(-50%,-50%) rotate(0deg) scale(1); }
-            100% { transform: translate(50%,50%) rotate(360deg) scale(1.5); }
+
+        @keyframes titleGlow {
+            0%, 100% { text-shadow: 0 0 30px rgba(255,107,107,0.3); }
+            50% { text-shadow: 0 0 50px rgba(255,107,107,0.6); }
+        }
+
+        @keyframes smokeFlow {
+            0% { transform: translate(0,0) scale(1); opacity: 0.3; }
+            50% { transform: translate(-50px,-50px) scale(1.2); opacity: 0.2; }
+            100% { transform: translate(0,0) scale(1); opacity: 0.3; }
+        }
+
+        @media (max-width: 768px) {
+            .main-title { font-size: 2.5rem; }
+            .subtitle { font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
-    <div class="smoke"></div>
-    <div class="container">
-        <h1 class="logo">Mispat Tobacco & Smoke Street</h1>
+    <div class="smoke-overlay"></div>
+    
+    <div class="hero">
+        <h1 class="main-title">MISPAT TOBACCO & SMOKE STREET</h1>
+        <div class="subtitle">PREMIUM SMOKE SHOP COMING SOON</div>
+        
         <div class="address">
             <i class="fas fa-map-marker-alt"></i> 12610 AL HWY 157 Unit-5, Vinemont, AL 35179
         </div>
 
-        <div class="countdown">
-            <h2>Opening In</h2>
-            <div class="timer">
-                <div class="timer-item"><span id="days">00</span><br>Days</div>
-                <div class="timer-item"><span id="hours">00</span><br>Hours</div>
-                <div class="timer-item"><span id="minutes">00</span><br>Minutes</div>
-                <div class="timer-item"><span id="seconds">00</span><br>Seconds</div>
-            </div>
-        </div>
-
-        <div class="services">
-            <h3><i class="fas fa-concierge-bell"></i> Services</h3>
-            <div class="badge"><i class="fas fa-walking"></i> Walk In</div>
-            <div class="badge"><i class="fas fa-car"></i> Drive Thru</div>
-            <div class="badge"><i class="fas fa-globe"></i> Online</div>
-        </div>
-
-        <div class="products">
-            <h3><i class="fas fa-shopping-bag"></i> Products</h3>
-            <div class="badge"><i class="fas fa-smoking"></i> Vape</div>
+        <div class="floating-badges">
+            <div class="badge"><i class="fas fa-smoking"></i> Vape Products</div>
             <div class="badge"><i class="fas fa-glass-whiskey"></i> Glass Pipes</div>
-            <div class="badge"><i class="fas fa-history"></i> Antiques</div>
-            <div class="badge"><i class="fas fa-tshirt"></i> Custom T-shirts</div>
-            <div class="badge"><i class="fas fa-cocktail"></i> Non-Alcoholic Drinks</div>
+            <div class="badge"><i class="fas fa-tshirt"></i> Custom Printing</div>
+        </div>
+
+        <div class="floating-badges">
+            <div class="badge"><i class="fas fa-car"></i> Drive Thru</div>
+            <div class="badge"><i class="fas fa-walking"></i> Walk Ins Welcome</div>
+            <div class="badge"><i class="fas fa-shipping-fast"></i> Online Orders</div>
         </div>
     </div>
 
     <script>
-        // Automatic Countdown with Confetti
-        const openingDate = new Date();
-        openingDate.setMonth(openingDate.getMonth() + 1);
-        openingDate.setDate(1);
-        openingDate.setHours(0, 0, 0, 0);
+        // Add subtle floating animation to badges
+        document.querySelectorAll('.badge').forEach(badge => {
+            badge.style.animation = `float ${3 + Math.random()*2}s ease-in-out infinite`;
+        });
 
-        const confetti = new ConfettiGenerator({ target: 'confetti-canvas', max: 150 });
-        
-        function updateTimer() {
-            const now = new Date();
-            const distance = openingDate - now;
+        // Add background sparkle effect
+        document.body.addEventListener('mousemove', (e) => {
+            const spark = document.createElement('div');
+            spark.style.cssText = `
+                position: fixed;
+                width: 5px;
+                height: 5px;
+                background: rgba(255,107,107,0.7);
+                border-radius: 50%;
+                left: ${e.pageX}px;
+                top: ${e.pageY}px;
+                pointer-events: none;
+                animation: sparkle 1s ease-out;
+            `;
+            document.body.appendChild(spark);
+            setTimeout(() => spark.remove(), 1000);
+        });
 
-            if (distance < 0) {
-                document.body.style.background = "#1a1a1a url('data:image/svg+xml,<svg%20viewBox=\"0%200%20100%20100\"%20xmlns=\"http://www.w3.org/2000/svg\"><text%20x=\"50%\"%20y=\"50%\"%20fill=\"%23ff6b6b\"%20font-size=\"30\"%20text-anchor=\"middle\">WE\'RE%20OPEN!</text></svg>')";
-                confetti.render();
-                return;
+        // Add CSS for animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-10px); }
             }
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById('days').textContent = days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-        }
-
-        setInterval(updateTimer, 1000);
-        updateTimer();
+            @keyframes sparkle {
+                0% { transform: scale(1); opacity: 1; }
+                100% { transform: scale(3); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
-    <canvas id="confetti-canvas" style="position:fixed;top:0;left:0;pointer-events:none;z-index:999"></canvas>
 </body>
 </html>
