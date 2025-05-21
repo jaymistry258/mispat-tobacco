@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mispat Tobacco & Smoke Street | Premium Smoke Shop</title>
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* ===== PROFESSIONAL SMOKE SHOP THEME ===== */
+        /* ===== PROFESSIONAL TOBACCO SHOP THEME ===== */
         :root {
-            --main-color: #8a2be2;
-            --accent-color: #00ff88;
-            --dark-bg: #0a0a0a;
+            --main-color: #8B4513;
+            --accent-color: #DEB887;
+            --dark-bg: #1a1a1a;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Urbanist', sans-serif;
+            font-family: 'Roboto Condensed', sans-serif;
             background: var(--dark-bg);
             color: #fff;
             line-height: 1.6;
@@ -29,7 +29,7 @@
             align-items: center;
             justify-content: center;
             background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)),
-                        url('https://images.pexels.com/photos/7123197/pexels-photo-7123197.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+                        url('https://images.pexels.com/photos/7123197/pexels-photo-7123197.jpeg');
             background-size: cover;
             background-position: center;
             text-align: center;
@@ -37,42 +37,34 @@
             border-bottom: 3px solid var(--main-color);
         }
 
-        .hero-content {
-            max-width: 800px;
-        }
-
         .main-title {
-            font-size: 4rem;
-            background: linear-gradient(45deg, var(--main-color), var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 3.5rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 3px;
             margin-bottom: 1rem;
-            text-shadow: 0 0 30px rgba(138,43,226,0.3);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         /* Product Showcase */
         .products-section {
             padding: 4rem 2rem;
+            background: #2d2d2d;
         }
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .product-card {
-            background: #1a1a1a;
-            border-radius: 10px;
+            background: #3d3d3d;
+            border-radius: 5px;
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: transform 0.3s;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
+            border: 1px solid var(--main-color);
         }
 
         .product-image {
@@ -81,65 +73,57 @@
             background-position: center;
         }
 
-        /* Contact Form */
+        /* Services Section */
+        .services-section {
+            padding: 4rem 2rem;
+            background: url('https://images.pexels.com/photos/7123194/pexels-photo-7123194.jpeg');
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        .service-box {
+            background: rgba(0,0,0,0.85);
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 2px solid var(--main-color);
+        }
+
+        /* Contact Section */
         .contact-section {
             padding: 4rem 2rem;
-            background: #1a1a1a;
             text-align: center;
+            background: var(--dark-bg);
         }
 
-        .contact-form {
-            max-width: 500px;
-            margin: 2rem auto;
-        }
-
-        .form-input {
-            width: 100%;
+        .contact-form input {
             padding: 1rem;
-            margin: 1rem 0;
-            background: #2d2d2d;
+            margin: 1rem;
+            width: 300px;
+            background: #333;
             border: 1px solid var(--main-color);
             color: white;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        .submit-btn {
-            background: linear-gradient(45deg, var(--main-color), var(--accent-color));
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 700;
-            transition: opacity 0.3s;
-        }
-
-        .submit-btn:hover {
-            opacity: 0.9;
         }
 
         @media (max-width: 768px) {
-            .main-title { font-size: 2.5rem; }
+            .main-title { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <h1 class="main-title">MISPAT TOBACCO</h1>
+        <div>
+            <h1 class="main-title">Mispat Tobacco & Smoke Street</h1>
             <p class="address" style="font-size: 1.2rem; margin-bottom: 2rem;">
                 <i class="fas fa-map-marker-alt"></i> 12610 AL HWY 157 Unit-5, Vinemont, AL 35179
             </p>
-            <div style="display: flex; gap: 1rem; justify-content: center;">
-                <div style="padding: 1rem; background: rgba(138,43,226,0.2); border-radius: 10px;">
-                    <i class="fas fa-car" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
-                    <p>Drive-Thru<br>Available</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <div style="padding: 1rem; background: rgba(139,69,19,0.3); border-radius: 5px;">
+                    <i class="fas fa-car"></i> Drive-Thru
                 </div>
-                <div style="padding: 1rem; background: rgba(0,255,136,0.2); border-radius: 10px;">
-                    <i class="fas fa-clock" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
-                    <p>Opening Soon<br>1st Next Month</p>
+                <div style="padding: 1rem; background: rgba(139,69,19,0.3); border-radius: 5px;">
+                    <i class="fas fa-calendar-alt"></i> Opening 1st Next Month
                 </div>
             </div>
         </div>
@@ -147,29 +131,50 @@
 
     <!-- Products Section -->
     <section class="products-section">
-        <h2 style="text-align: center; font-size: 2rem; margin-bottom: 3rem;">Our Products</h2>
+        <h2 style="text-align: center; margin-bottom: 2rem; font-size: 2rem;">Our Products</h2>
         <div class="product-grid">
             <div class="product-card">
-                <div class="product-image" style="background-image: url('https://images.pexels.com/photos/7123194/pexels-photo-7123194.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')"></div>
+                <div class="product-image" style="background-image: url('https://images.pexels.com/photos/4599761/pexels-photo-4599761.jpeg')"></div>
                 <div style="padding: 1.5rem;">
-                    <h3>Premium Vapes</h3>
-                    <p style="margin: 1rem 0; color: #888;">Latest devices & premium e-liquids</p>
+                    <h3>Vaping Products</h3>
+                    <p style="margin-top: 1rem;">Devices • E-Liquids • Accessories</p>
                 </div>
             </div>
 
             <div class="product-card">
-                <div class="product-image" style="background-image: url('https://images.pexels.com/photos/4599761/pexels-photo-4599761.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')"></div>
+                <div class="product-image" style="background-image: url('https://images.pexels.com/photos/7123194/pexels-photo-7123194.jpeg')"></div>
                 <div style="padding: 1.5rem;">
-                    <h3>Glass Pipes</h3>
-                    <p style="margin: 1rem 0; color: #888;">Artisan-made glassware collection</p>
+                    <h3>Smoking Pipes</h3>
+                    <p style="margin-top: 1rem;">Glass • Metal • Wooden</p>
                 </div>
             </div>
 
             <div class="product-card">
-                <div class="product-image" style="background-image: url('https://images.pexels.com/photos/2294342/pexels-photo-2294342.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')"></div>
+                <div class="product-image" style="background-image: url('https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg')"></div>
                 <div style="padding: 1.5rem;">
-                    <h3>Custom Apparel</h3>
-                    <p style="margin: 1rem 0; color: #888;">On-site T-shirt printing services</p>
+                    <h3>Tobacco Products</h3>
+                    <p style="margin-top: 1rem;">Premium Cigars • Rolling Tobacco • Accessories</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="service-box">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: var(--accent-color);">Our Services</h2>
+            <div style="display: grid; gap: 1.5rem;">
+                <div style="padding: 1rem; background: rgba(139,69,19,0.2);">
+                    <h3><i class="fas fa-tshirt"></i> Custom Printing</h3>
+                    <p>On-site T-shirt customization service</p>
+                </div>
+                <div style="padding: 1rem; background: rgba(139,69,19,0.2);">
+                    <h3><i class="fas fa-tools"></i> Device Maintenance</h3>
+                    <p>Vape device cleaning & repair services</p>
+                </div>
+                <div style="padding: 1rem; background: rgba(139,69,19,0.2);">
+                    <h3><i class="fas fa-shipping-fast"></i> Local Delivery</h3>
+                    <p>Same-day delivery within 10 miles</p>
                 </div>
             </div>
         </div>
@@ -177,32 +182,15 @@
 
     <!-- Contact Section -->
     <section class="contact-section">
-        <h2 style="font-size: 2rem; margin-bottom: 1rem;">Get Opening Updates</h2>
-        <form class="contact-form" id="contactForm">
-            <input type="text" class="form-input" placeholder="Your Name" required>
-            <input type="email" class="form-input" placeholder="Your Email" required>
-            <textarea class="form-input" rows="4" placeholder="What products are you most interested in?"></textarea>
-            <button type="submit" class="submit-btn">Notify Me</button>
+        <h2 style="margin-bottom: 2rem;">Get Opening Updates</h2>
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you! We will notify you when we open!'); this.reset();">
+            <input type="email" placeholder="Enter your email" required>
+            <input type="tel" placeholder="Phone number (optional)">
+            <br>
+            <button style="padding: 1rem 2rem; margin-top: 1rem; background: var(--main-color); border: none; color: white; cursor: pointer;">
+                Notify Me
+            </button>
         </form>
     </section>
-
-    <script>
-        // Simple Form Handling
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you! We will notify you when we open!');
-            this.reset();
-        });
-
-        // Add smooth scroll for future navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
 </body>
 </html>
